@@ -1,0 +1,31 @@
+Name:                   haskell-ninety-nine-questions
+Version:                0.0.0
+Author:                 Vinh Bachsy <bsdvinhuit@gmail.com>
+Maintainer:             Vinh Bachsy <bsdvinhuit@gmail.com>
+License:                MIT
+License-File:           LICENSE
+-- Synopsis:               Short description, appears in Hackage listings
+-- Description:            Long explanation, appears at top of project page
+Cabal-Version:          >= 1.10
+Build-Type:             Simple
+
+Library
+  Default-Language:     Haskell2010
+  HS-Source-Dirs:       src
+  GHC-Options:          -Wall
+  Exposed-Modules:      Haskell99Questions
+  Build-Depends:        base >= 4 && < 5
+
+Test-Suite spec
+  Type:                 exitcode-stdio-1.0
+  Default-Language:     Haskell2010
+  Hs-Source-Dirs:       test
+  Ghc-Options:          -Wall
+  Main-Is:              Spec.hs
+  Build-Depends:        base
+                      , haskell-ninety-nine-questions
+                      , hspec
+
+Source-Repository head
+  Type:                 git
+  Location:             https://github.com/vinh0604/haskell-99-questions
