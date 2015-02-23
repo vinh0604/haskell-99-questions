@@ -1,1 +1,1 @@
-module HaskellNinetyNineQuestionsSpec where
+{-# OPTIONS_GHC -F -pgmF hspec-discover #-}

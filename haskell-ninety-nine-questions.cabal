@@ -21,7 +21,7 @@ Test-Suite spec
   Default-Language:     Haskell2010
   Hs-Source-Dirs:       test
   Ghc-Options:          -Wall
-  Main-Is:              Problems/PartOneSpec.hs
+  Main-Is:              Spec.hs
   Build-Depends:        base
                       , haskell-ninety-nine-questions
                       , hspec
