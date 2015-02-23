@@ -13,7 +13,7 @@ Library
   Default-Language:     Haskell2010
   HS-Source-Dirs:       src
   GHC-Options:          -Wall
-  Exposed-Modules:      Haskell99Questions
+  Exposed-Modules:      HaskellNinetyNineQuestions.PartOne
   Build-Depends:        base >= 4 && < 5
 
 Test-Suite spec
@@ -21,7 +21,7 @@ Test-Suite spec
   Default-Language:     Haskell2010
   Hs-Source-Dirs:       test
   Ghc-Options:          -Wall
-  Main-Is:              Spec.hs
+  Main-Is:              PartOneSpec.hs
   Build-Depends:        base
                       , haskell-ninety-nine-questions
                       , hspec
