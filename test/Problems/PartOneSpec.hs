@@ -21,3 +21,11 @@ spec = do
     it "throw error call when apply on empty or single-element list" $ do
       evaluate (myButLast "a") `shouldThrow` anyErrorCall
       evaluate (myButLast "") `shouldThrow` anyErrorCall
+
+  describe "elementAt" $ do
+    it "returns element at provided index in the list" $ do
+      elementAt "abc" 1 `shouldBe` 'a'
+      elementAt "abc" 2 `shouldBe` 'b'
+    it "throw error if index is outbound" $ do
+      evaluate (elementAt "abc" 0) `shouldThrow` anyErrorCall
+      evaluate (elementAt "abc" 4) `shouldThrow` anyErrorCall
