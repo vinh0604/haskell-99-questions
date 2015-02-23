@@ -14,3 +14,10 @@ spec = do
       myLast "abc" `shouldBe` 'c'
     it "throw error call when apply on empty list" $ do
       evaluate (myLast "") `shouldThrow` anyErrorCall
+
+  describe "myButLast" $ do
+    it "returns the last but one element of a list" $ do
+      myButLast "abc" `shouldBe` 'b'
+    it "throw error call when apply on empty or single-element list" $ do
+      evaluate (myButLast "a") `shouldThrow` anyErrorCall
+      evaluate (myButLast "") `shouldThrow` anyErrorCall
