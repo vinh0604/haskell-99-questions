@@ -29,3 +29,17 @@ spec = do
     it "throw error if index is outbound" $ do
       evaluate (elementAt "abc" 0) `shouldThrow` anyErrorCall
       evaluate (elementAt "abc" 4) `shouldThrow` anyErrorCall
+
+  describe "myLength" $ do
+    it "returns 0 on empty list" $ do
+      myLength "" `shouldBe` 0
+    it "returns count of element in list" $ do
+      myLength "a" `shouldBe` 1
+      myLength "ab" `shouldBe` 2
+
+  describe "myReverse" $ do
+    it "returns empty list on empty list" $ do
+      myReverse "" `shouldBe` ""
+    it "returns new list with element of original list in reversed order" $ do
+      myReverse "abc" `shouldBe` "cba"
+      myReverse [0,2,1] `shouldBe` [1,2,0]
