@@ -21,3 +21,8 @@ myLength = foldr (\_ n -> 1 + n) 0
 
 myReverse :: [a] -> [a]
 myReverse = foldl (\xs x -> x:xs) []
+
+isPalindrome :: Eq a => [a] -> Bool
+isPalindrome [] = False
+isPalindrome [x] = True
+isPalindrome xs = xs == myReverse xs

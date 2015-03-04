@@ -43,3 +43,15 @@ spec = do
     it "returns new list with element of original list in reversed order" $ do
       myReverse "abc" `shouldBe` "cba"
       myReverse [0,2,1] `shouldBe` [1,2,0]
+
+  describe "isPalindrome" $ do
+    it "returns false on empty list" $ do
+      isPalindrome "" `shouldBe` False
+    it "returns true on single-element list" $ do
+      isPalindrome [1] `shouldBe` True
+    it "returns true on palindrome list" $ do
+      isPalindrome [1,2,2,1] `shouldBe` True
+      isPalindrome [1,2,1] `shouldBe` True
+    it "returns false on non palindrome list" $ do
+      isPalindrome [1,2] `shouldBe` False
+      isPalindrome [1,2,2] `shouldBe` False
