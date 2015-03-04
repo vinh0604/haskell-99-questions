@@ -55,3 +55,10 @@ spec = do
     it "returns false on non palindrome list" $ do
       isPalindrome [1,2] `shouldBe` False
       isPalindrome [1,2,2] `shouldBe` False
+
+  describe "flatten" $ do
+    it "returns single-element list when call on elemet" $ do
+      flatten (Elem 1) `shouldBe` [1]
+    it "returns flatted list of when call on list" $ do
+      flatten (List [Elem 1, List [Elem 2, Elem 3]]) `shouldBe` [1,2,3]
+      flatten (List [Elem 1, List [Elem 2, List [Elem 3, Elem 4], Elem 5]]) `shouldBe` [1,2,3,4,5]

@@ -26,3 +26,9 @@ isPalindrome :: Eq a => [a] -> Bool
 isPalindrome [] = False
 isPalindrome [x] = True
 isPalindrome xs = xs == myReverse xs
+
+data NestedList a = Elem a | List [NestedList a]
+
+flatten :: NestedList a -> [a]
+flatten (Elem x) = [x]
+flatten (List xs) = foldr (++) [] $ map flatten xs
