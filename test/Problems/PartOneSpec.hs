@@ -62,3 +62,9 @@ spec = do
     it "returns flatted list of when call on list" $ do
       flatten (List [Elem 1, List [Elem 2, Elem 3]]) `shouldBe` [1,2,3]
       flatten (List [Elem 1, List [Elem 2, List [Elem 3, Elem 4], Elem 5]]) `shouldBe` [1,2,3,4,5]
+
+  describe "compress" $ do
+    it "removes duplicated elements and keep the orginal order" $ do
+      compress "aaaabccaadeeee" `shouldBe` "abcade"
+    it "returns empty list for empty list" $ do
+      compress "" `shouldBe` []

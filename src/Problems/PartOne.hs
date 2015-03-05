@@ -32,3 +32,8 @@ data NestedList a = Elem a | List [NestedList a]
 flatten :: NestedList a -> [a]
 flatten (Elem x) = [x]
 flatten (List xs) = foldr (++) [] $ map flatten xs
+
+compress :: Eq a => [a] -> [a]
+compress [] = []
+compress [x] = [x]
+compress (x:xs) = foldl (\ys y -> if y == last ys then ys else ys ++ [y]) [x] xs
