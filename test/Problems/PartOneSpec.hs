@@ -64,7 +64,13 @@ spec = do
       flatten (List [Elem 1, List [Elem 2, List [Elem 3, Elem 4], Elem 5]]) `shouldBe` [1,2,3,4,5]
 
   describe "compress" $ do
-    it "removes duplicated elements and keep the orginal order" $ do
+    it "removes consecutive duplicates and keep the orginal order" $ do
       compress "aaaabccaadeeee" `shouldBe` "abcade"
     it "returns empty list for empty list" $ do
       compress "" `shouldBe` []
+
+  describe "pack" $ do
+    it "pack consecutive duplicates into sublist" $ do
+      pack "aaaabccaadeeee" `shouldBe` ["aaaa","b","cc","aa","d","eeee"]
+    it "returns empty list for empty list" $ do
+      pack "" `shouldBe` []

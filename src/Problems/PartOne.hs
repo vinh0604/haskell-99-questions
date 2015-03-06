@@ -37,3 +37,8 @@ compress :: Eq a => [a] -> [a]
 compress [] = []
 compress [x] = [x]
 compress (x:xs) = foldl (\ys y -> if y == last ys then ys else ys ++ [y]) [x] xs
+
+pack :: Eq a => [a] -> [[a]]
+pack [] = []
+pack [x] = [[x]]
+pack xs = foldr (\z (y:ys) -> if z == head y then (z:y):ys else [z]:y:ys) [[last xs]] (init xs)
