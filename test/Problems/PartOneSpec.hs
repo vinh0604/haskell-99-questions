@@ -74,3 +74,9 @@ spec = do
       pack "aaaabccaadeeee" `shouldBe` ["aaaa","b","cc","aa","d","eeee"]
     it "returns empty list for empty list" $ do
       pack "" `shouldBe` []
+
+  describe "encode" $ do
+    it "encode consecutive duplicates into list (N E)" $ do
+      encode "aaaabccaadeeee" `shouldBe` [(4,'a'), (1,'b'), (2,'c'), (2,'a'), (1,'d'), (4,'e')]
+    it "returns empty list for empty list" $ do
+      encode "" `shouldBe` []

@@ -42,3 +42,8 @@ pack :: Eq a => [a] -> [[a]]
 pack [] = []
 pack [x] = [[x]]
 pack xs = foldr (\z (y:ys) -> if z == head y then (z:y):ys else [z]:y:ys) [[last xs]] (init xs)
+
+encode :: Eq a => [a] -> [(Int, a)]
+encode [] = []
+encode [x] = [(1,x)]
+encode xs = foldr (\z (y:ys) -> if z == snd y then (fst y + 1, snd y):ys else (1, z):y:ys) [(1, last xs)] (init xs)
