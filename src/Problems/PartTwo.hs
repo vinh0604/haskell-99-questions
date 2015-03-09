@@ -21,3 +21,10 @@ encodeModified :: Eq a => [a] -> [EncodedElement a]
 encodeModified [] = []
 encodeModified [x] = [Single x]
 encodeModified xs = foldr processEncodedElement [Single $ last xs] (init xs)
+
+decodeElement :: Eq a => EncodedElement a -> [a]
+decodeElement (Single x) = [x]
+decodeElement (Multiple t x) = replicate t x
+
+decodeModified :: Eq a => [EncodedElement a] -> [a]
+decodeModified = foldr (\x xs -> decodeElement x ++ xs) []
