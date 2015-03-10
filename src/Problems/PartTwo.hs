@@ -28,3 +28,14 @@ decodeElement (Multiple t x) = replicate t x
 
 decodeModified :: Eq a => [EncodedElement a] -> [a]
 decodeModified = foldr (\x xs -> decodeElement x ++ xs) []
+
+encodeDirect :: Eq a => [a] -> [EncodedElement a]
+encodeDirect = encodeModified
+
+dupli :: [a] -> [a]
+dupli = foldr (\x xs -> [x,x] ++ xs) []
+
+repli :: [a] -> Int -> [a]
+repli _ 0 = []
+repli xs n = foldr (\x ys -> replicate n x ++ ys) [] xs
+
