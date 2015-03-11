@@ -39,3 +39,7 @@ repli :: [a] -> Int -> [a]
 repli _ 0 = []
 repli xs n = foldr (\x ys -> replicate n x ++ ys) [] xs
 
+dropEvery :: [a] -> Int -> [a]
+dropEvery xs 0 = xs
+dropEvery _ 1 = []
+dropEvery xs t = fst $ foldl (\(a,i) x -> if i `mod` t == 0 then (a, i+1) else (a++[x], i+1)) ([], 1) xs

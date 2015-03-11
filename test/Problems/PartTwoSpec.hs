@@ -32,3 +32,8 @@ spec = do
       repli "abcc" 3 `shouldBe` "aaabbbcccccc"
     it "returns empty list when replicate 0 times" $ do
       repli "abcc" 0 `shouldBe` []
+  describe "dropEvery" $ do
+    it "drop every element after a specific time" $ do
+      dropEvery "abcdefghik" 3 `shouldBe` "abdeghk"
+    it "returns original list if when drop on 0th element" $ do
+      dropEvery "abcd" 0 `shouldBe` "abcd"
