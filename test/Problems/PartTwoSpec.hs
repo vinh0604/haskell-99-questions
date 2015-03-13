@@ -28,7 +28,7 @@ spec = do
     it "returns empty list on empty list" $ do
       dupli "" `shouldBe` []
   describe "repli" $ do
-    it "replicate each item in the list with specific time" $ do
+    it "replicates each item in the list with specific time" $ do
       repli "abcc" 3 `shouldBe` "aaabbbcccccc"
     it "returns empty list when replicate less than or equal 0 times" $ do
       repli "abcc" 0 `shouldBe` []
@@ -40,7 +40,7 @@ spec = do
       dropEvery "abcd" 0 `shouldBe` "abcd"
       dropEvery "abcd" (-1) `shouldBe` "abcd"
   describe "split" $ do
-    it "split origin on specific position" $ do
+    it "splits origin on specific position" $ do
       split "abcdefghik" 3 `shouldBe` ("abc", "defghik")
     it "returns original list as the second and empty list as the first when position is less than or equal 0" $ do
       split "abcd" 0 `shouldBe` ([], "abcd")
@@ -49,9 +49,16 @@ spec = do
       split "abcd" 4 `shouldBe` ("abcd", [])
       split "abcd" 5 `shouldBe` ("abcd", [])
   describe "slice" $ do
-    it "extract elements of the list with index range, start from 1" $ do
+    it "extracts elements of the list with index range, start from 1" $ do
       slice "abcdefghik" 3 7 `shouldBe` "cdefg"
-    it "extract from first element if the from index is less than 1" $ do
+    it "extracts from first element if the from index is less than 1" $ do
       slice "abcdefghik" (0) 3 `shouldBe` "abc"
     it "returns empty list if to index is less than from index" $ do
       slice "abcdefghik" 3 2 `shouldBe` []
+  describe "rotate" $ do
+    it "moves the first nth elements to the end of the list if n is positive" $ do
+      rotate "abcdefghik" 3 `shouldBe` "defghikabc"
+    it "moves the last nth elements to the begining of the list if n is negative" $ do
+      rotate "abcdefghik" (-2) `shouldBe` "ikabcdefgh"
+    it "returns the original list if n is 0" $ do
+      rotate "abcd" 0 `shouldBe` "abcd"

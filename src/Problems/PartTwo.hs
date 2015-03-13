@@ -58,3 +58,9 @@ slice xs m n
   | m < 1 = helper xs 0 n
   | otherwise = helper xs (m-1) (n-m+1)
     where helper ys i k = take k $ drop i ys
+
+rotate :: [a] -> Int -> [a]
+rotate xs n
+  | n < 0 = helper xs (length xs + n)
+  | n >= 0 = helper xs n
+    where helper ys l = drop l ys ++ take l ys
