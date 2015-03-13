@@ -62,3 +62,10 @@ spec = do
       rotate "abcdefghik" (-2) `shouldBe` "ikabcdefgh"
     it "returns the original list if n is 0" $ do
       rotate "abcd" 0 `shouldBe` "abcd"
+  describe "removeAt" $ do
+    it "return removed element and remaining of the list as a tuple" $ do
+      removeAt "abcd" 2 `shouldBe` ('b', "acd")
+    it "throws error if removed index if out of bound" $ do
+      evaluate (removeAt "abcd" 0) `shouldThrow` anyErrorCall
+      evaluate (removeAt "abcd" 5) `shouldThrow` anyErrorCall
+

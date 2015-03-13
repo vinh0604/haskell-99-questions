@@ -64,3 +64,8 @@ rotate xs n
   | n < 0 = helper xs (length xs + n)
   | n >= 0 = helper xs n
     where helper ys l = drop l ys ++ take l ys
+
+removeAt :: [a] -> Int -> (a,[a])
+removeAt xs n
+  | n < 1 || n > length xs = undefined
+  | otherwise = (xs!!(n-1), take (n-1) xs ++ drop n xs)
