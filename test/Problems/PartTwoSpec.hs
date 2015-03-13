@@ -48,3 +48,10 @@ spec = do
     it "returns original list as the first and empty list as the second when position is greater than or equal list length" $ do
       split "abcd" 4 `shouldBe` ("abcd", [])
       split "abcd" 5 `shouldBe` ("abcd", [])
+  describe "slice" $ do
+    it "extract elements of the list with index range, start from 1" $ do
+      slice "abcdefghik" 3 7 `shouldBe` "cdefg"
+    it "extract from first element if the from index is less than 1" $ do
+      slice "abcdefghik" (0) 3 `shouldBe` "abc"
+    it "returns empty list if to index is less than from index" $ do
+      slice "abcdefghik" 3 2 `shouldBe` []

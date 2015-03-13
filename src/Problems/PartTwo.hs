@@ -51,3 +51,10 @@ split :: [a] -> Int -> ([a],[a])
 split xs n
   | n < 0 = ([], xs)
   | otherwise = (take n xs,drop n xs)
+
+slice :: [a] -> Int -> Int -> [a]
+slice xs m n
+  | n < m = []
+  | m < 1 = helper xs 0 n
+  | otherwise = helper xs (m-1) (n-m+1)
+    where helper ys i k = take k $ drop i ys
