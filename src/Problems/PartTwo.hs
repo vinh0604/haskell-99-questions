@@ -36,10 +36,18 @@ dupli :: [a] -> [a]
 dupli = foldr (\x xs -> [x,x] ++ xs) []
 
 repli :: [a] -> Int -> [a]
-repli _ 0 = []
-repli xs n = foldr (\x ys -> replicate n x ++ ys) [] xs
+repli xs n
+  | n <= 0 = []
+  | otherwise = foldr (\x ys -> replicate n x ++ ys) [] xs
 
 dropEvery :: [a] -> Int -> [a]
 dropEvery xs 0 = xs
-dropEvery _ 1 = []
-dropEvery xs t = fst $ foldl (\(a,i) x -> if i `mod` t == 0 then (a, i+1) else (a++[x], i+1)) ([], 1) xs
+dropEvery xs count = helper xs count
+    where helper [] _ = []
+          helper (_:ys) 1 = helper ys count
+          helper (y:ys) n = y:helper ys (n-1)
+
+split :: [a] -> Int -> ([a],[a])
+split xs n
+  | n < 0 = ([], xs)
+  | otherwise = (take n xs,drop n xs)

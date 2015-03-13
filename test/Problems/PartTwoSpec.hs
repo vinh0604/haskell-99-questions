@@ -32,19 +32,19 @@ spec = do
       repli "abcc" 3 `shouldBe` "aaabbbcccccc"
     it "returns empty list when replicate less than or equal 0 times" $ do
       repli "abcc" 0 `shouldBe` []
-      repli "abcc" -1 `shouldBe` []
+      repli "abcc" (-1) `shouldBe` []
   describe "dropEvery" $ do
     it "drop every element after a specific time" $ do
       dropEvery "abcdefghik" 3 `shouldBe` "abdeghk"
     it "returns original list if when posistion is less  than or equal 0" $ do
       dropEvery "abcd" 0 `shouldBe` "abcd"
-      dropEvery "abcd" -1 `shouldBe` "abcd"
+      dropEvery "abcd" (-1) `shouldBe` "abcd"
   describe "split" $ do
     it "split origin on specific position" $ do
       split "abcdefghik" 3 `shouldBe` ("abc", "defghik")
     it "returns original list as the second and empty list as the first when position is less than or equal 0" $ do
       split "abcd" 0 `shouldBe` ([], "abcd")
-      split "abcd" -1 `shouldBe` ([], "abcd")
-    it "returns original list as the first and empty list as the second when position is greater than or equal list length"
+      split "abcd" (-1) `shouldBe` ([], "abcd")
+    it "returns original list as the first and empty list as the second when position is greater than or equal list length" $ do
       split "abcd" 4 `shouldBe` ("abcd", [])
       split "abcd" 5 `shouldBe` ("abcd", [])
