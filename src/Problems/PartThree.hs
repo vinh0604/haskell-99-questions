@@ -6,3 +6,9 @@ insertAt x xs t
   | t > (length xs + 1) = undefined
   | otherwise = take i xs ++ [x] ++ drop i xs
     where i = t - 1
+
+range :: Int -> Int -> [Int]
+range m n
+  | m > n = []
+  | m == n = [m]
+  | otherwise = m:range (m+1) n

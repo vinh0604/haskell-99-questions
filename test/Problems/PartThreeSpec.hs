@@ -17,3 +17,8 @@ spec = do
     it "throws error if index is out of bound" $ do
       evaluate (insertAt 'X' "abcd" 0) `shouldThrow` anyErrorCall
       evaluate (insertAt 'X' "abcd" 6) `shouldThrow` anyErrorCall
+  describe "range" $ do
+    it "returns list of integer from ranged index" $ do
+      range 4 9 `shouldBe` [4,5,6,7,8,9]
+    it "returns empty list if to index is less than from index" $ do
+      range 4 3 `shouldBe` []
