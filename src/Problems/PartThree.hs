@@ -23,6 +23,7 @@ rnd_select xs num = do
 
 pickRandom :: Eq a => [a] -> Int -> StdGen -> [a]
 pickRandom [] _ _ = []
+pickRandom [x] _ _ = [x]
 pickRandom _ 0 _ = []
 pickRandom list num gen = element:pickRandom newList (num - 1) newGen
   where (r, newGen) = randomR (0, length list - 1) gen
@@ -34,3 +35,7 @@ diff_select num m = do
   g <- newStdGen
   return $ pickRandom (range 1 m) num g
 
+rnd_permu :: Eq a => [a] -> IO [a]
+rnd_permu xs = do
+  g <- newStdGen
+  return $ pickRandom xs (length xs) g

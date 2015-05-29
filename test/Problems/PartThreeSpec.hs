@@ -40,3 +40,10 @@ spec = do
     it "returns a sub list within range" $ do
       sub <- diff_select 3 9
       (maximum sub) `shouldSatisfy` (<= 9)
+  describe "rnd_permu" $ do
+    it "returns list with same length of the original list" $ do
+      sub <- rnd_permu "abcdefgh"
+      (length sub) `shouldBe` (length "abcdefgh")
+    it "returns list with all elements in the original list" $ do
+      sub <- rnd_permu "abcdefgh"
+      (all (`elem` "abcdefgh") sub) `shouldBe` True
