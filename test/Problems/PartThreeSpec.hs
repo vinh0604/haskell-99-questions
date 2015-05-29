@@ -3,6 +3,7 @@ module Problems.PartThreeSpec (main, spec) where
 import Test.Hspec
 import Control.Exception (evaluate)
 import Problems.PartThree
+import Data.List
 
 main :: IO ()
 main = hspec spec
@@ -22,3 +23,10 @@ spec = do
       range 4 9 `shouldBe` [4,5,6,7,8,9]
     it "returns empty list if to index is less than from index" $ do
       range 4 3 `shouldBe` []
+  -- describe "rnd_select" $ do
+  --   it "returns list of n ramdom elements" $ do
+  --     len <- fmap length $ rnd_select "abcdefgh" 3
+  --     len `shouldBe` 3
+  --   it "returns a sub list of original list" $ do
+  --     sub <- rnd_select "abcdefgh"
+  --     (all (`elem` "abcdefgh") sub) `shouldBe` True
