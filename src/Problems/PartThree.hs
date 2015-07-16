@@ -39,3 +39,21 @@ rnd_permu :: Eq a => [a] -> IO [a]
 rnd_permu xs = do
   g <- newStdGen
   return $ pickRandom xs (length xs) g
+
+combinations :: Int -> [a] -> [[a]]
+combinations 0 _  = [ [] ]
+combinations n xs = [ y:ys | y:xs' <- tails xs
+                    , ys <- combinations (n-1) xs']
+
+group3 :: Eq a => [Int] -> [a] -> [[[a]]]
+group3 [a,b,c] xs = [ [x,y,z] | x <- combinations a xs,
+                                  y <- combinations b (xs \\ x),
+                                  z <- combinations c (xs \\ (x ++ y))]
+
+group' :: Eq a => [Int] -> [a] -> [[[a]]]
+group' [] _ = [[]]
+group' _ [] = [[]]
+group' (size:sizes) xs = do
+                           x <- combinations size xs
+                           xs' <- group' sizes (xs \\ x)
+                           return (x:xs')

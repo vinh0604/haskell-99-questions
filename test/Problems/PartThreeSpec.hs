@@ -47,3 +47,18 @@ spec = do
     it "returns list with all elements in the original list" $ do
       sub <- rnd_permu "abcdefgh"
       (all (`elem` "abcdefgh") sub) `shouldBe` True
+  describe "combinations" $ do
+    it "returns all combinations of k elements of the list" $ do
+      (length $ combinations 3 "abcdef") `shouldBe` 20
+      (length $ combinations 1 "abcdef") `shouldBe` 6
+    it "returns list of single empty list if k is 0" $ do
+      combinations 0 "abcdef" `shouldBe` [[]]
+  describe "group3" $ do
+    it "returns all possible subsets of 3 subgroups from the original list" $ do
+      (length $ group3 [2,1,1] "abcd") `shouldBe` 12
+      (length $ group3 [2,3,4] ["aldo","beat","carla","david","evi","flip","gary","hugo","ida"]) `shouldBe` 1260
+  describe "group" $ do
+    it "returns all possible subsets of subgroups with the given sizes from the original list" $ do
+      (length $ group' [1,2] "abc") `shouldBe` 3
+      (length $ group' [2,3,4] ["aldo","beat","carla","david","evi","flip","gary","hugo","ida"]) `shouldBe` 1260
+
