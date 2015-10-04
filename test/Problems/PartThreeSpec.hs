@@ -61,4 +61,10 @@ spec = do
     it "returns all possible subsets of subgroups with the given sizes from the original list" $ do
       (length $ group' [1,2] "abc") `shouldBe` 3
       (length $ group' [2,3,4] ["aldo","beat","carla","david","evi","flip","gary","hugo","ida"]) `shouldBe` 1260
+  describe "lsort" $ do
+    it "sorts list based on its elements length" $ do
+      lsort ["abc", "de", "fgh", "de", "ijkl", "mn", "o"] `shouldBe` ["o","de","de","mn","abc","fgh","ijkl"]
+  describe "lfsort" $ do
+    it "sorts list based on its elements length frequency" $ do
+      lfsort ["abc", "de", "fgh", "de", "ijkl", "mn", "o"] `shouldBe` ["ijkl","o","abc","fgh","de","de","mn"]
 

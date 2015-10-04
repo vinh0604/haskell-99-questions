@@ -2,6 +2,8 @@ module Problems.PartThree where
 
 import System.Random
 import Data.List
+import Data.Ord (comparing)
+import Data.Function (on)
 
 insertAt :: a -> [a] -> Int -> [a]
 insertAt x xs t
@@ -57,3 +59,11 @@ group' (size:sizes) xs = do
                            x <- combinations size xs
                            xs' <- group' sizes (xs \\ x)
                            return (x:xs')
+
+lsort :: [[a]] -> [[a]]
+lsort = sortBy (comparing length)
+
+lfsort :: [[a]] -> [[a]]
+lfsort xs = sortBy (comparing flength) xs
+  where flength x = length $ filter (\x' -> (length x') == (length x)) xs
+
